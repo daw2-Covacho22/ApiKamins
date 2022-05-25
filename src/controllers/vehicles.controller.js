@@ -13,17 +13,23 @@ export const createVehicle = async (req, res) => {
 }
 
 export const getVehicles = async (req, res) => {
-    const vehicle = await Vehicle.find()
-    res.json(vehicle)
+    const vehicles = await Vehicle.find()
+    res.json(vehicles)
 }
 
-export const getVehiclesById = (req, res) => {
-
+export const getVehiclesById = async (req, res) => {
+    const vehicle = await Vehicle.findById(req.params.vehicleId)
+    res.status(200).json(vehicle)
 }
 
-export const updateVehiclesById = (req, res) => {
-
+export const updateVehiclesById = async (req, res) => {
+    const updatedVehicle = await Vehicle.findByIdAndUpdate(req.params.vehicleId, req.body, {
+        new: true
+    })
+    res.status(200).json(updatedVehicle)
 }
-export const deleteVehiclesById = (req, res) => {
 
+export const deleteVehiclesById = async (req, res) => {
+    await Vehicle.findByIdAndDelete(req.params.vehicleId)
+    res.status(204).json()
 }
