@@ -1,10 +1,20 @@
+
 import Vehicle from '../models/Vehicles'
-export const createVehicle = (req, res) => {
-    res.json('creating vehicle one')
+
+export const createVehicle = async (req, res) => {
+
+    const {name, model, tipo, autonomy} = req.body
+
+    const newVehicle = new Vehicle({name, model, tipo, autonomy})
+
+    const vehicleSaved = await newVehicle.save()
+
+    res.status(201).json(vehicleSaved)
 }
 
-export const getVehicles = (req, res) => {
-    res.json('get vehicles')
+export const getVehicles = async (req, res) => {
+    const vehicle = await Vehicle.find()
+    res.json(vehicle)
 }
 
 export const getVehiclesById = (req, res) => {

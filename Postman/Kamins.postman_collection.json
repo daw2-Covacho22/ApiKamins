@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "c728ebb3-5efc-42d9-ac7d-2e31f22b02b2",
+		"name": "Kamins",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Ver vehiculos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"vehicles"
+							]
+						},
+						"description": "http://localhost:4000/vehicles"
+					},
+					"response": []
+				},
+				{
+					"name": "crear vehiculo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Peugeot\",\n    \"model\": \"308\",\n    \"fuel\": {\n        \"gama\": \"gasolina\",\n        \"autonomy\": \"5,7\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"vehicles"
+							]
+						},
+						"description": "http://localhost:4000/vehicles"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": []
+		},
+		{
+			"name": "Places",
+			"item": []
+		}
+	]
+}
