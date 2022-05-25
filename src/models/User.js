@@ -1,6 +1,6 @@
 import {Schema, model} from 'mongoose'
 
-new Schema ({
+const userSchema = new Schema ({
     name: {
         type:String
     },
@@ -16,5 +16,14 @@ new Schema ({
         type:String,
         required:true
     },
-    roles: []
-})
+    roles: [{
+        ref: "Role",
+        type: Schema.Types.ObjectId
+    }]
+},{
+    timestamps: true,
+    versionKey: false
+}
+);
+
+export default userSchema;

@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import pkg from '../package.json'
 import vehiclesRoutes from './routes/vehicles.routes'
-
+import authRoutes from './routes/auth.routes'
 
 const app = express()
 
@@ -24,6 +24,7 @@ app.get('/', (req, res)=>{
     })
 })
 
-app.use('/vehicles', vehiclesRoutes)
+app.use('/api/vehicles', vehiclesRoutes)
+app.use('/api/auth', authRoutes)
 
 export default app;
