@@ -1,6 +1,6 @@
 import Vehicle from '../models/Vehicles'
 export const createVehicle = (req, res) => {
-    res.json('creating vehicle')
+    res.json('creating vehicle one')
 }
 
 export const getVehicles = (req, res) => {
