@@ -5,6 +5,7 @@ import config from "../config";
 import User from "../models/User";
 
 import Role from "../models/Role";
+import Places from "../models/Places";
 
 export const verifyToken = async (req, res, next) => {
   try {
@@ -12,8 +13,7 @@ export const verifyToken = async (req, res, next) => {
     const token = req.headers["x-access-token"];
 
     //comprobamos si el token no existe
-    if (!token)
-      return res.status(403).json({ message: "No has enviado token" });
+    if (!token) return res.status(403).json({ message: "No has enviado token" });
 
     //en caso de que exista extraemos lo que hay dentro del token
     const decoded = jwt.verify(token, config.SECRET);
@@ -53,17 +53,19 @@ export const isAdmin = async(req,res,next) =>{
   return res.statuts(403).json({message: "Requiere admin role"})
 }
 
+
+
 //No está hecho pero necesito saber si es ese usuario
 export const isthisUser = async(req,res,next) =>{
   //comprobamos si el usuario existe o no
   const user = await User.findById(req.userId)
 
-  //comprobamos los roles 
-  const roles = await Role.find({id: {$in:user.roles}})
+  //comprobamos los lugares 
+  const places = await Places.find({id: {$in:user.places}})
 
-  //recorremos los roles
-  for(let i=0;i<roles.length;i++){
-    if(roles[i].name === "user"){
+  //recorremos los lugares
+  for(let i=0;i<places.length;i++){
+    if(places[i].name === "user"){
       next();
       return;
     }
