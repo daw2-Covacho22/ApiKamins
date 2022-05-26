@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-
-mongoose.connect("mongodb://localhost/Kamins", {
+//mongodb://localhost/Kamins
+mongoose.connect("mongodb+srv://covacho_sara:Daw2_2021@cluster0.olbhw.mongodb.net/Kamins?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

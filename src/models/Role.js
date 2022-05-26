@@ -1,10 +1,12 @@
 import {Schema, model} from 'mongoose'
 
+export const ROLES = ["user", "admin"]
+
 const roleSchema = new Schema(
     {
-        name: String
+        name: String,
     },{
-        versionKey:false
+        versionKey:false,
     }
 );
 

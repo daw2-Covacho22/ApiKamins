@@ -3,9 +3,9 @@ import Vehicle from '../models/Vehicles'
 
 export const createVehicle = async (req, res) => {
 
-    const {name, model, tipo, autonomy} = req.body
+    const {brand, model, tipo, autonomy} = req.body
 
-    const newVehicle = new Vehicle({name, model, tipo, autonomy})
+    const newVehicle = new Vehicle({brand, model, tipo, autonomy})
 
     const vehicleSaved = await newVehicle.save()
 

@@ -14,13 +14,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/vehicles",
+							"raw": "http://localhost:4000/api/vehicles",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
+								"api",
 								"vehicles"
 							]
 						},
@@ -29,7 +30,51 @@
 					"response": []
 				},
 				{
-					"name": "crear vehiculo",
+					"name": "Ver vehiculos por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/vehicles/628e1540db251d19e44c210d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vehicles",
+								"628e1540db251d19e44c210d"
+							]
+						},
+						"description": "http://localhost:4000/vehicles"
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar vehiculos por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/vehicles/628e1540db251d19e44c210d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vehicles",
+								"628e1540db251d19e44c210d"
+							]
+						},
+						"description": "http://localhost:4000/vehicles"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear vehiculo",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -41,7 +86,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"brand\": \"Peugeot\",\n    \"model\": \"308\",\n    \"fuel\": {\n        \"gama\": \"gasolina\",\n        \"autonomy\": \"5,7\"\n    }\n}",
+							"raw": "{\n    \"brand\": \"peugeot\",\n    \"model\": \"208\",\n    \"tipo\": \"gasolina\",\n    \"autonomy\": \"5,7\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -49,14 +94,52 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/vehicles",
+							"raw": "http://localhost:4000/api/vehicles",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
+								"api",
 								"vehicles"
+							]
+						},
+						"description": "http://localhost:4000/vehicles"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar vehiculo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"208\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/vehicles/628e1540db251d19e44c210d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"vehicles",
+								"628e1540db251d19e44c210d"
 							]
 						},
 						"description": "http://localhost:4000/vehicles"
@@ -72,6 +155,69 @@
 		{
 			"name": "Places",
 			"item": []
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Sara\",\n    \"email\": \"covacho@prueba.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/signup?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
