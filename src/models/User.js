@@ -2,6 +2,10 @@ import {Schema, model} from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 const userSchema = new Schema ({
+    name: {
+        type:String,
+        unique:true
+    },
     username: {
         type:String,
         unique:true
@@ -16,6 +20,14 @@ const userSchema = new Schema ({
     },
     roles: [{
         ref: "Role",
+        type: Schema.Types.ObjectId
+    }],
+    places: [{
+        ref: "Places",
+        type: Schema.Types.ObjectId
+    }],
+    vehicles: [{
+        ref: "Vehicle",
         type: Schema.Types.ObjectId
     }]
 },{

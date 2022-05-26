@@ -8,8 +8,6 @@ import vehiclesRoutes from "./routes/vehicles.routes";
 import authRoutes from "./routes/auth.routes";
 import usersRoutes from "./routes/user.routes"
 
-
-
 import { createRoles } from "./libs/initialSetup";
 
 const app = express()
@@ -31,6 +29,7 @@ app.get('/', (req, res)=>{
 })
 
 app.use('/api/vehicles', vehiclesRoutes)
+app.use('/api/places', placesRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
 

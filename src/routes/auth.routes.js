@@ -6,7 +6,7 @@ import {verifySignup} from '../middlewares'
 
 //cuando añado el checkDuplicateUsernameOrEmail peta
 router.post('/signup', 
-    [verifySignup.checkDuplicateUsernameOrEmail, verifySignup.checkRolesExisted], 
+    //[verifySignup.checkDuplicateUsernameOrEmail, verifySignup.checkRolesExisted], 
     authCtrl.signup
 )
 router.post('/signin', authCtrl.signin)
