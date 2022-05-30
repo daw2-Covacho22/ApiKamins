@@ -21,14 +21,6 @@ const userSchema = new Schema ({
     roles: [{
         ref: "Role",
         type: Schema.Types.ObjectId
-    }],
-    places: [{
-        ref: "Places",
-        type: Schema.Types.ObjectId
-    }],
-    vehicles: [{
-        ref: "Vehicle",
-        type: Schema.Types.ObjectId
     }]
 },{
     timestamps: true,

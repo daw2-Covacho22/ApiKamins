@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
         expiresIn: 86400 //24 hours
     })
 
-    res.json({token})
+    res.json({savedUser,token})
 }
 
 export const signin = async (req, res) => {
@@ -47,5 +47,20 @@ export const signin = async (req, res) => {
         expiresIn: 86400 //24 hours
     })
    
-   res.json({token})
+   res.json({userFound, token})
+}
+
+export const logout = async (req, res) => {
+    const userFound = await User.findOne({id: req.body._id}).populate("roles");
+
+    console.log(userFound)
+
+    if(!userFound) return res.status(400).json({message: "User not found"})
+
+    const token = jwt.sign({id: userFound._id}, config.SECRET, {
+        expiresIn: 0 //0 hours
+    })
+    
+    res.send("logout success!");
+    
 }

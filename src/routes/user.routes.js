@@ -11,17 +11,21 @@ router.post('/', [
     verifySingup.checkRolesExisted
 ] ,userCtrl.createUser);
 
-// GET Listar todos los vehiculos, podemos hacerlo todos.
-router.get('/', userCtrl.getUsers)
+// GET Listar todos los usuaros, podemos hacerlo todos.
+router.get('/', 
+    [authJwt.verifyToken,authJwt.isAdmin], 
+    userCtrl.getUsers)
 
-// GET Listar los vehículos por ID
-router.get('/:userId', userCtrl.getUserById)
+// GET Listar los usuarios por ID
+router.get('/:userId', 
+[authJwt.verifyToken,authJwt.isAdmin], 
+userCtrl.getUserById)
 
-//PUT actualizar un vehiculo solo puedes hacerlo si tienes token
+//PUT actualizar un usuarios solo puedes hacerlo si tienes token
 router.put('/:userId', authJwt.verifyToken, userCtrl.updateUserById)
 
-// DELETE borrar un vehiculo solo puedes hacerlo si tienes token
-router.delete('/:userId', [authJwt.verifyToken], userCtrl.deleteUserById)
+// DELETE borrar un usuarios solo puedes hacerlo si tienes token
+router.delete('/:userId', [authJwt.verifyToken, authJwt.isAdmin,], userCtrl.deleteUserById)
 
 
 

@@ -1,10 +1,10 @@
 import {Schema, model} from 'mongoose'
 
 const vehicleSchema = new Schema({
+    username: String,
     brand: String,
     model: String,
-    tipo: String,
-    autonomy: String
+    tipo: String
 },{
     timestamps: true,
     versionKey: false

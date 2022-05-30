@@ -3,8 +3,8 @@ import Place from '../models/Places'
 //Crear un lugar
 export const createPlace = async (req, res) => {
 
-    const {name, street, city, coordinates} = req.body
-    const newPlace = new Place({name, street, city, coordinates})
+    const {username, name, street, city} = req.body
+    const newPlace = new Place({username, name, street, city})
     const placeSaved = await newPlace.save()
     res.status(201).json(placeSaved)
 }

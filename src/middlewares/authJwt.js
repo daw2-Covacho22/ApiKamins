@@ -5,7 +5,6 @@ import config from "../config";
 import User from "../models/User";
 
 import Role from "../models/Role";
-import Places from "../models/Places";
 
 export const verifyToken = async (req, res, next) => {
   try {
@@ -55,23 +54,3 @@ export const isAdmin = async(req,res,next) =>{
 
 
 
-//No está hecho pero necesito saber si es ese usuario
-export const isthisUser = async(req,res,next) =>{
-  //comprobamos si el usuario existe o no
-  const user = await User.findById(req.userId)
-
-  //comprobamos los lugares 
-  const places = await Places.find({id: {$in:user.places}})
-
-  //recorremos los lugares
-  for(let i=0;i<places.length;i++){
-    if(places[i].name === "user"){
-      next();
-      return;
-    }
-    
-  }
-
-  return res.statuts(403).json({message: "Requiere User role"})
-  
-}
